@@ -14,12 +14,17 @@ Example:
 
 $public__test = new public__test__t;
 
-$rc = $public__test->get([ 'filter'=> [ 'id'=> $id, 'flag_valid'=> 'true' ], 'expect_count'=> 1 ]); // get ONE valid row (by PRIMARY KEY)
+// get ONE valid row (by PRIMARY KEY)
+$rc = $public__test->get([ 'filter'=> [ 'id'=> $id, 'flag_valid'=> 'true' ], 'expect_count'=> 1 ]);
 
-$rc = $public__test->cnt([ 'filter'=> [ 'flag_valid'=> 'true' ] ]); // get count of all valid rows
+// get count of all valid rows
+$rc = $public__test->cnt([ 'filter'=> [ 'flag_valid'=> 'true' ] ]);
 
-$rc = $public__test->get([ 'filter'=> [ 'flag_valid'=> 'true' ], 'sort'=> [ 'id'=> 'DESC' ], 'offset'=> $offset, 'limit'=> $limit ]); // get all valid rows with order by id
+// get all valid rows with order by id
+$rc = $public__test->get([ 'filter'=> [ 'flag_valid'=> 'true' ], 'sort'=> [ 'id'=> 'DESC' ], 'offset'=> $offset, 'limit'=> $limit ]);
 
-$rc = $public__test->del([ 'filter'=> [ 'id'=> $id ] ]); // del row (by PRIMARY KEY)
+// del row (by PRIMARY KEY)
+$rc = $public__test->del([ 'filter'=> [ 'id'=> $id ] ]);
 
-$rc = $public__test->del(); // del all rows
+// del all rows
+$rc = $public__test->del();

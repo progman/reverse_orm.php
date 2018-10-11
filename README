@@ -1,13 +1,15 @@
 Reverce ORM. We do not create tables, we create CRUD queryes from your tables and you can add your queryes too.
 
 
-1) CREATE TABLE (see test/test.sql)
+1) Get this: git clone https://github.com/progman/reverse_orm.php.git
 
-2) CREATE DESC OF TABLE (see test/reverse_orm.json)
+2) CREATE TABLE (see test/test.sql)
 
-3) MAKE SQL QUERYES (start test/make.sh)
+3) CREATE DESC OF TABLE (see test/reverse_orm.json)
 
-4) TEST IT (start test/test.sh)
+4) MAKE SQL QUERYES (start test/make.sh)
+
+5) TEST IT (start test/test.sh)
 
 
 Example:

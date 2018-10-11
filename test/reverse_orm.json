@@ -1,0 +1,22 @@
+{
+	"table_list" :
+	[
+		{
+			"server_name"      : "test_reverse_orm",
+			"table_schema"     : "public",
+			"table_name"       : "test",
+			"table_name_short" : "t",
+			"model_name"       : "public__test__t",
+			"filter_list"      :
+			[
+				[ "id" ],
+				[ "flag_valid" ],
+				[ "id", "flag_valid" ]
+			],
+			"sort_list"        :
+			[
+				{ "id": "DESC" }
+			]
+		}
+	]
+}

@@ -1,0 +1,1 @@
+CREATE TABLE test(id BYTEA NOT NULL, value JSONB NOT NULL, flag_valid BOOL NOT NULL, PRIMARY KEY (id));

@@ -1,0 +1,6 @@
+[submodule "submodule/libcore.php"]
+	path = submodule/libcore.php
+	url = https://github.com/progman/libcore.php.git
+[submodule "submodule/libsql_postgresql.php"]
+	path = submodule/libsql_postgresql.php
+	url = https://github.com/progman/libsql_postgresql.php.git

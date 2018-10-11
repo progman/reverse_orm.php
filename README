@@ -1,4 +1,4 @@
-Reverce ORM. We do not create tables, we create CRUD queryes and you can add your queryes too.
+Reverce ORM. We do not create tables, we create CRUD queryes from your tables and you can add your queryes too.
 
 
 1) CREATE TABLE (see test/test.sql)

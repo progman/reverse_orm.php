@@ -1,6 +1,6 @@
 <?php
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-// 1.0.3
+// 1.0.4
 // Alexey Potehin <gnuplanet@gmail.com>, http://www.gnuplanet.online/doc/cv
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 require_once("submodule/libcore.php/libcore.php");
@@ -2115,7 +2115,10 @@ function generate_example($arg)
 	$tmp .= "/*"."\n";
 
 
+	$tmp .= "// init model"."\n";
 	$tmp .= "	\$".$table_schema."__".$table_name." = new ".$table_schema."__".$table_name."__t(\$sql_handle);\n";
+	$tmp .= "\n";
+	$tmp .= "\n";
 
 
 	$max_col_name_size = 0;
@@ -2146,6 +2149,7 @@ function generate_example($arg)
 	$max_col_type_size++;
 
 
+	$tmp .= "// add ".$table_name."\n";
 	for ($i=0; $i < $table_columns_list_size; $i++)
 	{
 		$tmp .= "	\$".$table_schema."__".$table_name."->".$table_columns_list[$i]->column_name;
@@ -2202,7 +2206,7 @@ function generate_example($arg)
 	}
 
 
-	$tmp .= "\n";
+//	$tmp .= "\n";
 	$tmp .= "\n";
 	$tmp .= '	$rc = $'.$table_schema.'__'.$table_name.'->add();'."\n";
 	$tmp .= '	if ($rc->is_ok() === false) return $rc;'."\n";
@@ -2210,6 +2214,7 @@ function generate_example($arg)
 
 	$tmp .= "\n";
 	$tmp .= "\n";
+	$tmp .= "// cnt ".$table_name."\n";
 	$tmp .= '	$rc = $'.$table_schema.'__'.$table_name.'->cnt([ "filter"=> [ "flag_valid"=> "true" ] ]);'."\n";
 	$tmp .= '	if ($rc->is_ok() === false) return $rc;'."\n";
 	$tmp .= '	$count = $rc->get_value();'."\n";
@@ -2218,6 +2223,7 @@ function generate_example($arg)
 
 	$tmp .= "\n";
 	$tmp .= "\n";
+	$tmp .= "// get ".$table_name."\n";
 	$tmp .= '	$rc = $'.$table_schema.'__'.$table_name.'->get([ "filter"=> [ "flag_valid"=> "true" ], "sort"=> [ "id"=> "DESC" ], "offset"=> null, "limit"=> null, "expect_count"=> null, "lock"=> false ]);'."\n";
 	$tmp .= '	if ($rc->is_ok() === false) return $rc;'."\n";
 	$tmp .= '	$obj_list = $rc->get_value();'."\n";
@@ -2226,6 +2232,7 @@ function generate_example($arg)
 
 	$tmp .= "\n";
 	$tmp .= "\n";
+	$tmp .= "// get ".$table_name."\n";
 	$tmp .= '	$rc = $'.$table_schema.'__'.$table_name.'->get([ "filter"=> [ "id"=> "06", "flag_valid"=> "true" ], "expect_count"=> 1, "lock"=> true ]);'."\n";
 	$tmp .= '	if ($rc->is_ok() === false) return $rc;'."\n";
 	$tmp .= '	$obj_list = $rc->get_value();'."\n";
@@ -2234,13 +2241,16 @@ function generate_example($arg)
 
 	$tmp .= "\n";
 	$tmp .= "\n";
+	$tmp .= "// set ".$table_name."\n";
 	$tmp .= '	$'.$table_schema.'__'.$table_name.'->flag_valid = \'0\';'."\n";
+	$tmp .= "\n";
 	$tmp .= '	$rc = $public__client->set([ "filter"=> [ "id"=> "06" ] ]);'."\n";
 	$tmp .= '	if ($rc->is_ok() === false) return $rc;'."\n";
 
 
 	$tmp .= "\n";
 	$tmp .= "\n";
+	$tmp .= "// del ".$table_name."\n";
 	$tmp .= '	$rc = $'.$table_schema.'__'.$table_name.'->del([ "filter"=> [ "id"=> "06" ] ]);'."\n";
 	$tmp .= '	if ($rc->is_ok() === false) return $rc;'."\n";
 

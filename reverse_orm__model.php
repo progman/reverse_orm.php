@@ -157,7 +157,7 @@ class reverse_orm__model__t implements ArrayAccess
 					$backtrace = debug_backtrace();
 					$result = new result_t($backtrace[0]["function"], $backtrace[0]["file"], $backtrace[0]["line"]);
 
-					$result->set_err(13, "in model for table \"".$this->get_table_name()."\", key \"".$key."\" is not exist");
+					$result->set_err(13, "in model for table \"".$this->get_table_name()."\", key \"".$key."\" must be set");
 					return $result;
 				}
 

@@ -569,7 +569,7 @@ class reverse_orm__model__t implements ArrayAccess
 			{
 				if ($count !== $arg_obj->expect_count)
 				{
-					$result->set_err(13, "in model for table \"".$this->get_table_name()."\", we expected ".$arg_obj->expect_count." rows");
+					$result->set_err(13, "in model for table \"".$this->get_table_name()."\", we expected ".$arg_obj->expect_count." rows, but ".$count." in fact");
 					return $result;
 				}
 			}

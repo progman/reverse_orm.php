@@ -2244,7 +2244,7 @@ function generate_example($arg)
 	$tmp .= "// set ".$table_name."\n";
 	$tmp .= '	$'.$table_schema.'__'.$table_name.'->flag_valid = \'0\';'."\n";
 	$tmp .= "\n";
-	$tmp .= '	$rc = $public__client->set([ "filter"=> [ "id"=> "06" ] ]);'."\n";
+	$tmp .= '	$rc = $'.$table_schema.'__'.$table_name.'->set([ "filter"=> [ "id"=> "06" ] ]);'."\n";
 	$tmp .= '	if ($rc->is_ok() === false) return $rc;'."\n";
 
 

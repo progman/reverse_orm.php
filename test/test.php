@@ -16,7 +16,7 @@ $arg->sql_database  = libcore__get_var_str("SQL_DATABASE");
 $arg->sql_login     = libcore__get_var_str("SQL_LOGIN");
 $arg->sql_password  = libcore__get_var_str("SQL_PASSWORD");
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-function action($arg)
+function do_it($arg)
 {
 	$result = new result_t(__FUNCTION__, __FILE__);
 
@@ -130,11 +130,49 @@ function action($arg)
 	echo "count: ".$count."\n";
 
 
+	echo "-[test0015]-----------------------------------------------\n";
+	$rc = $public__test->lck();
+	if ($rc->is_ok() === false) return $rc;
+
+
 //	$rc = $public__test->hand([ 'name'=> 'HAND_0001' ] );
 //	if ($rc->is_ok() === false) return $rc;
 
 
 	$result->set_ok();
+	return $result;
+}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+function action($arg)
+{
+	$result = new result_t(__FUNCTION__, __FILE__);
+
+
+// begin transaction
+	$rc = libsql__transaction_begin($arg->sql_handle);
+	if ($rc->is_ok() === false) return $rc;
+
+
+	$rc = do_it($arg);
+	if ($rc->is_ok() === false)
+	{
+		libsql__transaction_rollback($arg->sql_handle);
+		return $rc;
+	}
+	$value = $rc->get_value();
+
+
+// commit transaction
+	$rc = libsql__transaction_commit($arg->sql_handle);
+	if ($rc->is_ok() === false)
+	{
+		libsql__transaction_rollback($arg->sql_handle);
+		return $rc;
+	}
+
+
+	$result->set_ok();
+	$result->set_value($value);
 	return $result;
 }
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

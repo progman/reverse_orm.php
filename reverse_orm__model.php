@@ -551,6 +551,8 @@ class reverse_orm__model__t implements ArrayAccess
 
 
 		$this->clear();
+
+
 		$rc = $func($this->sql_handle, null, $arg_obj->filter_list, $arg_obj->sort_list, $arg_obj->offset, $arg_obj->limit, $arg_obj->flag_lock);
 		if ($rc->is_ok() === true)
 		{
@@ -618,6 +620,52 @@ class reverse_orm__model__t implements ArrayAccess
 
 
 		$rc = $func($this->sql_handle, null, $arg_obj->filter_list, $arg_obj->sort_list, $arg_obj->offset, $arg_obj->limit, $arg_obj->flag_lock);
+		if ($rc->is_ok() === false)
+		{
+			return $rc;
+		}
+
+
+		$result->set_ok();
+		return $result;
+	}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+	public function lck($arg = null)
+	{
+		$result = new result_t(__FUNCTION__, __FILE__, __LINE__);
+
+
+		$action = "LCK";
+
+
+		$rc = $this->get_arg_obj($arg);
+		if ($rc->is_ok() === false) return $rc;
+		$arg_obj = $rc->get_value();
+
+
+		$rc = $this->check_handle();
+		if ($rc->is_ok() === false) return $rc;
+
+
+//		$rc = $this->check_item_list();
+//		if ($rc->is_ok() === false) return $rc;
+
+
+		$rc = $this->get_func($arg, $action);
+		if ($rc->is_ok() === false) return $rc;
+		$func = $rc->get_value();
+
+
+		if ($this->flag_debug !== false)
+		{
+			echo "use ".$func."() for ".$action."\n";
+		}
+
+
+		$this->clear();
+
+
+		$rc = $func($this->sql_handle);
 		if ($rc->is_ok() === false)
 		{
 			return $rc;

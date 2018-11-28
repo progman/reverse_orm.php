@@ -14,7 +14,8 @@ Reverce ORM. We do not create tables, we create CRUD queryes from your tables an
 
 Example:
 
-$public__test = new public__test__t;
+// init model test
+$public__test = new public__test__t($sql_handle);
 
 // get ONE valid row (by PRIMARY KEY)
 $rc = $public__test->get([ 'filter'=> [ 'id'=> $id, 'flag_valid'=> 'true' ], 'expect_count'=> 1 ]);

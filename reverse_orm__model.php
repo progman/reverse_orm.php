@@ -75,6 +75,11 @@ class reverse_orm__model__t implements ArrayAccess
 			return null;
 		}
 
+		if (property_exists($this->item_list[0], $name) === false)
+		{
+			return null;
+		}
+
 		return $this->item_list[0]->$name;
 	}
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -138,6 +143,7 @@ class reverse_orm__model__t implements ArrayAccess
 
 		$key_list = $this->get_key_list();
 
+
 		$item_list_size = count($this->item_list);
 		if ($item_list_size === 0)
 		{
@@ -147,6 +153,7 @@ class reverse_orm__model__t implements ArrayAccess
 			$result->set_err(13, "in model for table \"".$this->get_table_name()."\", data is not found");
 			return $result;
 		}
+
 
 		for ($i=0; $i < $item_list_size; $i++)
 		{
@@ -171,6 +178,22 @@ class reverse_orm__model__t implements ArrayAccess
 						$result->set_err(13, "in model for table \"".$this->get_table_name()."\", key \"".$key."\" must be not null");
 						return $result;
 					}
+				}
+			}
+		}
+
+
+		for ($i=0; $i < $item_list_size; $i++)
+		{
+			foreach ($this->item_list[$i] as $item_key => $item_value)
+			{
+				if (array_key_exists($item_key, $key_list) === false)
+				{
+					$backtrace = debug_backtrace();
+					$result = new result_t($backtrace[0]["function"], $backtrace[0]["file"], $backtrace[0]["line"]);
+
+					$result->set_err(13, "in model for table \"".$this->get_table_name()."\", key \"".$item_key."\" can not be exist");
+					return $result;
 				}
 			}
 		}

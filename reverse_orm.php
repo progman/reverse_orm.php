@@ -1,6 +1,6 @@
 <?php
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-// 1.0.8
+// 1.0.9
 // Alexey Potehin <gnuplanet@gmail.com>, http://www.gnuplanet.online/doc/cv
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 require_once("submodule/libcore.php/libcore.php");
@@ -1351,7 +1351,7 @@ function generate_select_list($arg, $plan)
 
 			if (strcmp($table_columns_list[$i]->data_type_real, 'bytea[]') === 0)
 			{
-				$line .= '		".libsql__bytea2var_list ("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
+				$line .= '		".libsql__bytea_list2var ("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
 				$flag_found = true;
 				break;
 			}
@@ -1365,7 +1365,7 @@ function generate_select_list($arg, $plan)
 
 			if (strcmp($table_columns_list[$i]->data_type_real, 'text[]') === 0)
 			{
-				$line .= '		".libsql__text2var_list  ("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
+				$line .= '		".libsql__text_list2var  ("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
 				$flag_found = true;
 				break;
 			}
@@ -1379,7 +1379,7 @@ function generate_select_list($arg, $plan)
 
 			if (strcmp($table_columns_list[$i]->data_type_real, 'json[]') === 0)
 			{
-				$line .= '		".libsql__json2var_list  ("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
+				$line .= '		".libsql__json_list2var  ("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
 				$flag_found = true;
 				break;
 			}
@@ -1393,7 +1393,7 @@ function generate_select_list($arg, $plan)
 
 			if (strcmp($table_columns_list[$i]->data_type_real, 'bigint[]') === 0)
 			{
-				$line .= '		".libsql__bigint2var_list("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
+				$line .= '		".libsql__bigint_list2var("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
 				$flag_found = true;
 				break;
 			}
@@ -1407,7 +1407,7 @@ function generate_select_list($arg, $plan)
 
 			if (strcmp($table_columns_list[$i]->data_type_real, 'timestamp[]') === 0)
 			{
-				$line .= '		".libsql__time2var_list  ("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
+				$line .= '		".libsql__time_list2var  ("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
 				$flag_found = true;
 				break;
 			}
@@ -1421,7 +1421,7 @@ function generate_select_list($arg, $plan)
 
 			if (strcmp($table_columns_list[$i]->data_type_real, 'boolean[]') === 0)
 			{
-				$line .= '		".libsql__flag2var_list  ("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
+				$line .= '		".libsql__flag_list2var  ("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
 				$flag_found = true;
 				break;
 			}
@@ -1435,7 +1435,7 @@ function generate_select_list($arg, $plan)
 
 			if (strcmp($table_columns_list[$i]->data_type_real, 'uuid[]') === 0)
 			{
-				$line .= '		".libsql__uuid2var_list  ("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
+				$line .= '		".libsql__uuid_list2var  ("'.$table_name_short.'", "'.$table_columns_list[$i]->column_name.'")."';
 				$flag_found = true;
 				break;
 			}

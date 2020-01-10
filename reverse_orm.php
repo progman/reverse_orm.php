@@ -1,6 +1,6 @@
 <?php
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-// 1.1.3
+// 1.1.4
 // Alexey Potehin <gnuplanet@gmail.com>, http://www.gnuplanet.online/doc/cv
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 require_once("submodule/libcore.php/libcore.php");
@@ -1721,7 +1721,7 @@ function generate_select_list($arg, $plan)
 
 			if (strcmp($table_columns_list[$i]->data_type_real, 'text[]') === 0)
 			{
-				$line .= '			$item->'.$table_columns_list[$i]->column_name.spacer1($table_columns_list, $i).'= $row["'.$table_columns_list[$i]->column_name.'"];';
+				$line .= '			$item->'.$table_columns_list[$i]->column_name.spacer1($table_columns_list, $i).'= json_decode($row["'.$table_columns_list[$i]->column_name.'"]);';
 				$flag_found = true;
 				break;
 			}

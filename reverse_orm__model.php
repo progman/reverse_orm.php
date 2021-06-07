@@ -177,7 +177,7 @@ class reverse_orm__model__t implements ArrayAccess
 		{
 			foreach ($key_list as $key => $value)
 			{
-				if (array_key_exists($key, $this->item_list[$i]) === false)
+				if (property_exists($this->item_list[$i], $key) === false)
 				{
 					$backtrace = debug_backtrace();
 					$result = new result_t($backtrace[0]["function"], $backtrace[0]["file"], $backtrace[0]["line"]);
